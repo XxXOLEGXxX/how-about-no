@@ -1,5 +1,5 @@
-addLayer("c", {
-        layer: "c", // This is assigned automatically, both to the layer and all upgrades, etc. Shown here so you know about it
+addLayer("apl", {
+        layer: "apl", // This is assigned automatically, both to the layer and all upgrades, etc. Shown here so you know about it
         startData() { return {
             unl: true,
 			points: new Decimal(0),
@@ -9,9 +9,9 @@ addLayer("c", {
             beep: false,
         }},
         color:() => "#4BDC13",
-        requires:() => new Decimal(10), // Can be a function that takes requirement increases into account
-        resource: "lollipops", // Name of prestige currency
-        baseResource: "candies", // Name of resource prestige is based on
+        requires:() => new Decimal(1), // Can be a function that takes requirement increases into account
+        resource: "anti-planck length", // Name of prestige currency
+        baseResource: "some mysterious shit", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
         type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
         exponent: 0.5, // Prestige currency exponent
@@ -46,7 +46,7 @@ addLayer("c", {
             done() {return player[this.layer].best.gte(4)},
             effectDesc:() => "You can toggle beep and boop (which do nothing)",
             toggles: [
-                ["c", "beep"], // Each toggle is defined by a layer and the data toggled for that layer
+                ["apl", "beep"], // Each toggle is defined by a layer and the data toggled for that layer
                 ["f", "boop"]],
             }
         },
@@ -76,12 +76,12 @@ addLayer("c", {
             cols: 3,
             11: {
                 title:() => "Generator of Genericness",
-                desc:() => "Gain 1 Point every second.",
+                desc:() => "Gain 1 mysterious shit every second.",
                 cost:() => new Decimal(1),
                 unl() { return player[this.layer].unl }, // The upgrade is only visible when this is true
             },
             12: {
-                desc:() => "Candy generation is faster based on your unspent Lollipops.",
+                desc:() => "Some mysterious shit generation is faster based on your unspent Lollipops.",
                 cost:() => new Decimal(1),
                 unl() { return (hasUpg(this.layer, 11))},
                 effect() { // Calculate bonuses from the upgrade. Can return a single value or an object with multiple values
@@ -94,8 +94,8 @@ addLayer("c", {
             13: {
                 desc:() => "Make this layer act like you bought it first.",
                 cost:() => new Decimal(69),
-                currencyDisplayName: "candies", // Use if using a nonstandard currency
-                currencyInternalName: "points", // Use if using a nonstandard currency
+                currencyDisplayName: "some mysterious shit", // Use if using a nonstandard currency
+                currencyInternalName: "", // Use if using a nonstandard currency
                 currencyLayer: "", // Leave empty if not in a layer "e.g. points"
                 unl() { return (hasUpg(this.layer, 12))},
                 onPurchase() { // This function triggers when the upgrade is purchased
