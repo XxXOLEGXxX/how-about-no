@@ -38,11 +38,11 @@ addLayer("apl", {
             return "which are boosting waffles by "+format(eff.waffleBoost)+" and increasing the Ice Cream cap by "+format(eff.icecreamCap)
         },
         milestones: {
-            0: {requirementDesc:() => "3 Lollipops",
+            0: {requirementDesc:() => "3 Anti-Planck Lengths",
             done() {return player[this.layer].best.gte(3)}, // Used to determine when to give the milestone
             effectDesc:() => "Makes this green",
             },
-            1: {requirementDesc:() => "4 Lollipops",
+            1: {requirementDesc:() => "4 Anti-Planck Lengths",
             done() {return player[this.layer].best.gte(4)},
             effectDesc:() => "You can toggle beep and boop (which do nothing)",
             toggles: [
@@ -58,8 +58,8 @@ addLayer("apl", {
 			    desc:() => "Makes the game 0% harder",
 			    unl() { return player[this.layer].best.gt(0) },
                 goal:() => new Decimal("20"),
-                currencyDisplayName: "lollipops", // Use if using a nonstandard currency
-                currencyInternalName: "points", // Use if using a nonstandard currency
+                currencyDisplayName: "anti-planck lengths", // Use if using a nonstandard currency
+                currencyInternalName: "some mysterious shit", // Use if using a nonstandard currency
                 currencyLayer: this.layer, // Leave empty if not in a layer
                 effect() {
                     let ret = player[this.layer].points.add(1).tetrate(0.02)
@@ -95,7 +95,7 @@ addLayer("apl", {
                 desc:() => "Make this layer act like you bought it first.",
                 cost:() => new Decimal(69),
                 currencyDisplayName: "some mysterious shit", // Use if using a nonstandard currency
-                currencyInternalName: "", // Use if using a nonstandard currency
+                currencyInternalName: "points", // Use if using a nonstandard currency
                 currencyLayer: "", // Leave empty if not in a layer "e.g. points"
                 unl() { return (hasUpg(this.layer, 12))},
                 onPurchase() { // This function triggers when the upgrade is purchased
@@ -130,7 +130,7 @@ addLayer("apl", {
                 },
                 display() { // Everything else displayed in the buyable button after the title
                     let data = tmp.buyables[this.layer][this.id]
-                    return "Cost: " + format(data.cost) + " lollipops\n\
+                    return "Cost: " + format(data.cost) + " anti-planck lengths\n\
                     Amount: " + player[this.layer].buyables[this.id] + "\n\
                     Adds + " + format(data.effect.first) + " things and multiplies stuff by " + format(data.effect.second)
                 },
